@@ -6,13 +6,14 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   // State variable to track whether the form is in sign-up mode or not
   const [isSignInForm, setSignInForm] = useState(true); //by default sign in form so if sign in form in true.
   const [errorMessage, setErrorMessage] = useState(null);
   const email = useRef(null);
   const password = useRef(null);
-
+  const navigate = useNavigate();
   const handleButtonClick = () => {
     // validate the form data
     // checkValidData(email, password);
@@ -32,6 +33,7 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -49,6 +51,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
           // eslint-disable-next-line no-undef
           setErrorMessage(errorCode + "-" + errorMessage);
         })

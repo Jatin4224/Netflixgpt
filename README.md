@@ -11,17 +11,20 @@
 -Firebase setup
 -Deploying our app to production
 -create sign up user account.
-#Features
--Login/signup
--signIN / singUp form
--redirect to Browse Page
--Browse Page(after authentication)
--Header
--Main Movie
--trailor in bakckground
--title & decription
--MovieSuggestions - MovieList \* N
+-implement Sign In user API
+-Created Redux Store with userSlice.
 
--NetflixGpt
--searchBar
--movie suggestions
+- #Features
+  -Login/signup
+  -signIN / singUp form
+  -redirect to Browse Page
+  -Browse Page(after authentication)
+  -Header
+  -Main Movie
+  -trailor in bakckground
+  -title & decription
+  -MovieSuggestions - MovieList \* N
+
+  -NetflixGpt
+  -searchBar
+  -movie suggestions
