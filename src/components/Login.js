@@ -40,7 +40,8 @@ const Login = () => {
           //manage users
           updateProfile(user, {
             displayName: email.current.value,
-            photoURL: "https://twitter.com/jatin4224/photo",
+            photoURL:
+              "https://avatars.githubusercontent.com/u/93386551?s=400&u=6f9f688fc7b75ce8e429c4815eb9ad7d9e49345c&v=4",
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
