@@ -1,6 +1,6 @@
-import Login from "./Login";
-import Browse from "./Browse";
 import { createBrowserRouter } from "react-router-dom";
+import Browse from "./Browse";
+import Login from "./Login";
 import { RouterProvider } from "react-router-dom";
 
 const Body = () => {
@@ -15,14 +15,10 @@ const Body = () => {
     },
   ]);
 
-  //calling onAuthStateChanged api from firebase i dont want to call this api again and again so i use useEffect.
-  // i want to add this only ones when component renders.
-
   return (
     <div>
       <RouterProvider router={appRouter} />
     </div>
   );
 };
-
 export default Body;

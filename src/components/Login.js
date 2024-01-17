@@ -9,6 +9,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { USER_AVATAR } from "../utils/constants";
 const Login = () => {
   // State variable to track whether the form is in sign-up mode or not
   const [isSignInForm, setSignInForm] = useState(true); //by default sign in form so if sign in form in true.
@@ -40,8 +41,7 @@ const Login = () => {
           //manage users
           updateProfile(user, {
             displayName: email.current.value,
-            photoURL:
-              "https://avatars.githubusercontent.com/u/93386551?s=400&u=6f9f688fc7b75ce8e429c4815eb9ad7d9e49345c&v=4",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
