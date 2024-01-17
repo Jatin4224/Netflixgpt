@@ -4,13 +4,19 @@ import { checkValidData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 const Login = () => {
   // State variable to track whether the form is in sign-up mode or not
   const [isSignInForm, setSignInForm] = useState(true); //by default sign in form so if sign in form in true.
   const [errorMessage, setErrorMessage] = useState(null);
+  // const name = useRef(null);
+
+  const dispatch = useDispatch();
   const email = useRef(null);
   const password = useRef(null);
   const navigate = useNavigate();
@@ -32,8 +38,26 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          //manage users
+          updateProfile(user, {
+            displayName: email.current.value,
+            photoURL: "https://twitter.com/jatin4224/photo",
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
