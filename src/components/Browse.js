@@ -6,6 +6,15 @@ const Browse = () => {
   return (
     <div>
       <Header />
+      {/* 
+         MainContainer =
+         - videoBackgorund
+          -videoTitle
+          SecondaryContainer 
+          -MovieList * n
+            - cards  * n
+            
+       */}
     </div>
   );
 };
